@@ -7,11 +7,11 @@ pre-commit:
   parallel: true
   commands:
     lint:
-      glob: "*.{ts,tsx,js,jsx,json,css,scss,md}"
-      run: npm run lint:ts
+      glob: "*.{js,ts,jsx,tsx,json}"
+      run: npm run lint -- --fix
       stage_fixed: true
     lint-types:
-      glob: "*.{ts,tsx}"
+      glob: "*.{js,ts,jsx,tsx}"
       run: npm run lint:ts
     format:
       run: npx prettier {staged_files} --write --ignore-unknown --check
@@ -19,5 +19,5 @@ pre-commit:
 pre-push:
   parallel: true
   commands:
-    unit-tests:
-      run: npm run test:coverage
+    unit-test:
+      run: npm run coverage
