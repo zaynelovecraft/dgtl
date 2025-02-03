@@ -1,0 +1,23 @@
+commit-msg:
+  parallel: true
+  commands:
+    lint-commit-msg:
+      run: npx commitlint --edit
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: "*.{ts,tsx,js,jsx,json,css,scss,md}"
+      run: npm run lint:ts
+      stage_fixed: true
+    lint-types:
+      glob: "*.{ts,tsx}"
+      run: npm run lint:ts
+    format:
+      run: npx prettier {staged_files} --write --ignore-unknown --check
+      stage_fixed: true
+pre-push:
+  parallel: true
+  commands:
+    unit-tests:
+      run: npm run test:coverage
