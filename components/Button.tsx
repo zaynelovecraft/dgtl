@@ -14,3 +14,7 @@ export const Button = ({ text, color }: ButtonProps) => {
 export const H1 = () => {
   return <h1>Home</h1>;
 };
+
+export const add = (a: number, b: number) => {
+  return a + b;
+};
